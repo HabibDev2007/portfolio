@@ -15,22 +15,23 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: '[ADD YOUR PROJECT HERE]',
+    name: 'Calculator',
     description:
-      '[ADD A SHORT DESCRIPTION — what problem it solves, what you built, and what you learned while building it.]',
-    technologies: ['Python', 'Flask', 'Machine Learning', 'LightGBM'],
-    image: '', // import from '../assets/projects/your-image.jpg' and reference it here
-    githubUrl: '[ADD GITHUB LINK]',
+      'A basic calculator app built to practice core programming logic and backend fundamentals — handling user input, performing arithmetic operations, and serving the interface through a Flask web app.',
+    technologies: ['Python', 'Flask', 'Git'],
+    image: '',
+    githubUrl: 'https://github.com/HabibDev2007/Calculator.git',
     liveUrl: '',
-    status: 'In Progress',
+    status: 'Live',
   },
   {
-    name: '[ADD ANOTHER PROJECT HERE]',
-    description: '[ADD A SHORT DESCRIPTION OF THIS PROJECT]',
-    technologies: ['JavaScript', 'HTML', 'CSS'],
+    name: 'Personal Portfolio Website',
+    description:
+      'This site — a personal portfolio built to showcase my education, projects, certificates, and journey into software engineering. Built with a component-based architecture and content kept separate from the UI so it stays easy to update.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     image: '',
-    githubUrl: '[ADD GITHUB LINK]',
-    liveUrl: '',
-    status: 'Archived',
+    githubUrl: 'https://github.com/HabibDev2007/portfolio',
+    liveUrl: 'https://portfolio-theta-umber-2tr08lexg1.vercel.app/',
+    status: 'Live',
   },
 ]
