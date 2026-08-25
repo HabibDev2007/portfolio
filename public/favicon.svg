@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#0B0D12"/>
+  <path d="M14 22 V14 H22" stroke="#6C8CFF" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M50 22 V14 H42" stroke="#6C8CFF" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M14 42 V50 H22" stroke="#6C8CFF" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M50 42 V50 H42" stroke="#6C8CFF" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <text x="32" y="38" font-family="monospace" font-size="16" fill="#ECEEF2" text-anchor="middle">AH</text>
+</svg>
