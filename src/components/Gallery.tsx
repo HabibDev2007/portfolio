@@ -4,18 +4,23 @@ import { Image as ImageIcon, X } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { gallery } from '../data/gallery'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
+import { galleryText } from '../i18n/content'
 
 export default function Gallery() {
+  const { t } = useT()
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const caption = (i: number) => t(galleryText[i], gallery[i].caption)
 
   return (
     <section id="gallery" className="section-pad relative">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           index="06"
-          label="gallery"
-          title="A few moments"
-          description="University, hackathons, certificates, and everything in between."
+          label={t(ui.gallery.eyebrow)}
+          title={t(ui.gallery.title)}
+          description={t(ui.gallery.subtitle)}
         />
 
         <div className="columns-2 gap-4 sm:columns-3 [&>*]:mb-4">
@@ -30,13 +35,13 @@ export default function Gallery() {
                 {photo.src ? (
                   <img
                     src={photo.src}
-                    alt={photo.caption}
+                    alt={caption(i)}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-surface2 p-4 text-center text-muted">
                     <ImageIcon size={24} />
-                    <p className="mono-label text-[11px]">{photo.caption}</p>
+                    <p className="mono-label text-[11px]">{caption(i)}</p>
                   </div>
                 )}
               </button>
@@ -70,11 +75,11 @@ export default function Gallery() {
               {gallery[activeIndex].src ? (
                 <img
                   src={gallery[activeIndex].src}
-                  alt={gallery[activeIndex].caption}
+                  alt={caption(activeIndex)}
                   className="max-h-[75vh] rounded-xl object-contain"
                 />
               ) : (
-                <p className="mono-label text-muted">{gallery[activeIndex].caption}</p>
+                <p className="mono-label text-muted">{caption(activeIndex)}</p>
               )}
             </motion.div>
           </motion.div>

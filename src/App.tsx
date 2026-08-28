@@ -12,6 +12,7 @@ import Goals from './components/Goals'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import { LanguageProvider } from './i18n/LanguageContext'
 
 // Small easter egg: press "g" then "h" to jump back to the top.
 function useGoHomeShortcut() {
@@ -39,23 +40,25 @@ function App() {
   useGoHomeShortcut()
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-bg text-ink transition-colors">
-      <CustomCursor />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Education />
-        <Achievements />
-        <Projects />
-        <Skills />
-        <Gallery />
-        <Experience />
-        <Goals />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="relative min-h-screen overflow-x-hidden bg-bg text-ink transition-colors">
+        <CustomCursor />
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Education />
+          <Achievements />
+          <Projects />
+          <Skills />
+          <Gallery />
+          <Experience />
+          <Goals />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }
 

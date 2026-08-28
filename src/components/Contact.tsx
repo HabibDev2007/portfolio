@@ -2,6 +2,8 @@ import { Github, Linkedin, Instagram, Mail, ArrowRight } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { social } from '../data/profile'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
 
 const links = [
   { href: social.github, icon: Github, label: 'GitHub' },
@@ -10,14 +12,15 @@ const links = [
 ]
 
 export default function Contact() {
+  const { t } = useT()
   return (
     <section id="contact" className="section-pad relative">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <SectionHeading
           index="09"
-          label="contact"
-          title="Let's connect"
-          description="I'm always interested in learning, building, collaborating, and connecting with people in technology."
+          label={t(ui.contact.eyebrow)}
+          title={t(ui.contact.title)}
+          description={t(ui.contact.subtitle)}
         />
 
         <Reveal delay={0.1}>

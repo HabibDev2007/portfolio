@@ -21,4 +21,5 @@ export const gallery: GalleryPhoto[] = [
   { src: hackathonDesks, caption: 'AI Hack CCC — team workspace' },
   { src: aiHackathonBanner, caption: '"AI Hackathon: Code. Create. Conquer"' },
   { src: friendsHeadphones, caption: 'With a friend' },
+  { src: '', caption: '[ADD YOUR PHOTO HERE — University]' },
 ]

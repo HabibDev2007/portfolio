@@ -19,9 +19,9 @@ export const projects: Project[] = [
     description:
       'A basic calculator app built to practice core programming logic and backend fundamentals — handling user input, performing arithmetic operations, and serving the interface through a Flask web app.',
     technologies: ['Python', 'Flask', 'Git'],
-    image: '',
+    image: '', // import from '../assets/projects/your-image.jpg' and reference it here
     githubUrl: 'https://github.com/HabibDev2007/Calculator.git',
-    liveUrl: '',
+    liveUrl: '', // [ADD LIVE DEMO LINK] — add this if the app is hosted somewhere, to show the "Live Demo" button
     status: 'Live',
   },
   {

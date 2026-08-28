@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Instagram, Mail, User } from 'lucide-react'
 import { profile, social } from '../data/profile'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
+import { profileText } from '../i18n/content'
 
 const socialLinks = [
   { href: social.github, icon: Github, label: 'GitHub' },
@@ -10,6 +13,7 @@ const socialLinks = [
 ]
 
 export default function Hero() {
+  const { t } = useT()
   return (
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-32">
       <div className="blueprint-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
@@ -26,15 +30,15 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-mint" />
             </span>
-            {profile.status}
+            {t(profileText.status, profile.status)}
           </div>
 
           <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
             {profile.name}
           </h1>
-          <p className="mt-4 font-display text-xl text-signal sm:text-2xl">{profile.title}</p>
+          <p className="mt-4 font-display text-xl text-signal sm:text-2xl">{t(profileText.title, profile.title)}</p>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            {profile.tagline}
+            {t(profileText.tagline, profile.tagline)}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -43,14 +47,14 @@ export default function Hero() {
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               className="rounded-full bg-signal px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-[1.03] active:scale-95"
             >
-              View My Journey
+              {t(ui.hero.viewJourney)}
             </button>
             <button
               data-cursor-hover
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               className="rounded-full border border-line/15 px-6 py-3 text-sm font-medium transition-colors hover:border-signal/40 hover:text-signal"
             >
-              View My Projects
+              {t(ui.hero.viewProjects)}
             </button>
           </div>
 

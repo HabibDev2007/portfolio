@@ -1,13 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, Award } from 'lucide-react'
 import type { Certificate } from '../data/certificates'
+import { useT } from '../i18n/useT'
+import type { LocalizedText } from '../i18n/config'
 
 interface Props {
   certificate: Certificate | null
+  translation?: { title: LocalizedText; description: LocalizedText }
   onClose: () => void
 }
 
-export default function CertificateModal({ certificate, onClose }: Props) {
+export default function CertificateModal({ certificate, translation, onClose }: Props) {
+  const { t } = useT()
   return (
     <AnimatePresence>
       {certificate && (
@@ -47,9 +51,13 @@ export default function CertificateModal({ certificate, onClose }: Props) {
 
             <div className="p-6">
               <p className="mono-label text-xs text-signal">{certificate.date} · {certificate.category}</p>
-              <h3 className="mt-2 font-display text-xl font-semibold">{certificate.title}</h3>
+              <h3 className="mt-2 font-display text-xl font-semibold">
+                {t(translation?.title, certificate.title)}
+              </h3>
               <p className="mt-1 text-sm text-muted">{certificate.organization}</p>
-              <p className="mt-4 text-sm leading-relaxed text-muted">{certificate.description}</p>
+              <p className="mt-4 text-sm leading-relaxed text-muted">
+                {t(translation?.description, certificate.description)}
+              </p>
             </div>
           </motion.div>
         </motion.div>

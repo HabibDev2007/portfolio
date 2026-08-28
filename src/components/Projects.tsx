@@ -2,6 +2,9 @@ import { Github, ExternalLink, Code2 } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { projects } from '../data/projects'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
+import { projectsText } from '../i18n/content'
 
 const statusStyles: Record<string, string> = {
   Live: 'text-mint border-mint/30 bg-mint/10',
@@ -10,14 +13,15 @@ const statusStyles: Record<string, string> = {
 }
 
 export default function Projects() {
+  const { t } = useT()
   return (
     <section id="projects" className="section-pad relative">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           index="04"
-          label="projects"
-          title="Things I've built"
-          description="A selection of projects — some finished, some still in progress. More are always in the pipeline."
+          label={t(ui.projects.eyebrow)}
+          title={t(ui.projects.title)}
+          description={t(ui.projects.subtitle)}
         />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -39,10 +43,12 @@ export default function Projects() {
                         statusStyles[project.status]
                       }`}
                     >
-                      {project.status}
+                      {t(ui.status[project.status], project.status)}
                     </span>
                   </div>
-                  <p className="flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+                  <p className="flex-1 text-sm leading-relaxed text-muted">
+                    {t(projectsText[i]?.description, project.description)}
+                  </p>
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {project.technologies.map((tech) => (
@@ -63,7 +69,7 @@ export default function Projects() {
                       data-cursor-hover
                       className="flex items-center gap-1.5 rounded-full border border-line/15 px-4 py-2 text-xs font-medium transition-colors hover:border-signal/40 hover:text-signal"
                     >
-                      <Github size={13} /> Code
+                      <Github size={13} /> {t(ui.projects.code)}
                     </a>
                     {project.liveUrl && (
                       <a
@@ -73,7 +79,7 @@ export default function Projects() {
                         data-cursor-hover
                         className="flex items-center gap-1.5 rounded-full bg-signal px-4 py-2 text-xs font-medium text-white"
                       >
-                        <ExternalLink size={13} /> Live Demo
+                        <ExternalLink size={13} /> {t(ui.projects.liveDemo)}
                       </a>
                     )}
                   </div>

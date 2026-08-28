@@ -2,22 +2,26 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import ThemeToggle from './ThemeToggle'
+import LanguageSwitcher from './LanguageSwitcher'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { profile } from '../data/profile'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
 
 const NAV_ITEMS = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'education', label: 'Education' },
-  { id: 'achievements', label: 'Achievements' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'home', label: ui.nav.home },
+  { id: 'about', label: ui.nav.about },
+  { id: 'education', label: ui.nav.education },
+  { id: 'achievements', label: ui.nav.achievements },
+  { id: 'projects', label: ui.nav.projects },
+  { id: 'skills', label: ui.nav.skills },
+  { id: 'gallery', label: ui.nav.gallery },
+  { id: 'experience', label: ui.nav.experience },
+  { id: 'contact', label: ui.nav.contact },
 ]
 
 export default function Navbar() {
+  const { t } = useT()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const active = useActiveSection(NAV_ITEMS.map((i) => i.id))
@@ -64,13 +68,14 @@ export default function Navbar() {
                     : 'text-muted hover:text-ink'
                 }`}
               >
-                {item.label}
+                {t(item.label)}
               </button>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggle />
           <button
             onClick={() => setOpen((o) => !o)}
@@ -99,7 +104,7 @@ export default function Navbar() {
                   active === item.id ? 'bg-signal/10 text-signal' : 'text-muted'
                 }`}
               >
-                {item.label}
+                {t(item.label)}
               </button>
             ))}
           </motion.div>

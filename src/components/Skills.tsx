@@ -1,23 +1,29 @@
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { skills } from '../data/skills'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
+import { skillsText } from '../i18n/content'
 
 export default function Skills() {
+  const { t } = useT()
   return (
     <section id="skills" className="section-pad relative">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           index="05"
-          label="skills"
-          title="What I work with"
-          description="Tools and technologies I've used and continue to build with — no exaggerated levels, just what's real."
+          label={t(ui.skills.eyebrow)}
+          title={t(ui.skills.title)}
+          description={t(ui.skills.subtitle)}
         />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((group, i) => (
             <Reveal key={group.category} delay={i * 0.08}>
               <div className="bracket-card h-full rounded-xl p-6">
-                <p className="mono-label mb-4 text-xs text-signal">{group.category}</p>
+                <p className="mono-label mb-4 text-xs text-signal">
+                  {t(skillsText[i]?.category, group.category)}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <span

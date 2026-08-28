@@ -2,12 +2,16 @@ import { Briefcase } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import { experience } from '../data/experience'
+import { useT } from '../i18n/useT'
+import { ui } from '../i18n/ui'
+import { experienceText } from '../i18n/content'
 
 export default function Experience() {
+  const { t } = useT()
   return (
     <section id="experience" className="section-pad relative">
       <div className="mx-auto max-w-4xl px-6">
-        <SectionHeading index="07" label="experience" title="Where I've worked" />
+        <SectionHeading index="07" label={t(ui.experience.eyebrow)} title={t(ui.experience.title)} />
 
         <div className="relative space-y-10 border-l border-line/10 pl-8">
           {experience.map((exp, i) => (
@@ -16,7 +20,9 @@ export default function Experience() {
                 <Briefcase size={13} />
               </span>
               <p className="mono-label text-xs text-signal">{exp.dates}</p>
-              <h3 className="mt-1 font-display text-xl font-semibold">{exp.position}</h3>
+              <h3 className="mt-1 font-display text-xl font-semibold">
+                {t(experienceText[i]?.position, exp.position)}
+              </h3>
               <p className="mt-1 text-sm text-muted">
                 {exp.organization} · {exp.location}
               </p>
